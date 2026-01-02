@@ -1,12 +1,8 @@
-import {useFindById} from "../useFindById.js";
-import {useParams} from "react-router-dom";
 import {ProductImage} from "./ProductImage.jsx";
 import {ProductDescription} from "./ProductDescription.jsx";
 
 
-export const ProductDetail = () => {
-    let {id} = useParams();
-    const {productDetail} = useFindById(id);
+export const ProductDetail = ({productDetail}) => {
     if (!productDetail) return (
         <div className="p-4">Loading...</div>
     )
