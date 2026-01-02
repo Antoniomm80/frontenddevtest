@@ -1,9 +1,6 @@
-import {useFindProducts} from "../useFindProducts.js";
 import {Link} from "react-router-dom";
 
-export const ProductsList = () => {
-    const {products} = useFindProducts();
-
+export const ProductsList = ({products}) => {
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Products List</h1>
