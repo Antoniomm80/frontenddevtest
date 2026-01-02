@@ -1,8 +1,8 @@
-import {useGetAllProducts} from "../useGetAllProducts.js";
+import {useFindProducts} from "../useFindProducts.js";
 import {Link} from "react-router-dom";
 
-export const ProductsList = ({getAllProductsUseCase}) => {
-    const {products} = useGetAllProducts(getAllProductsUseCase);
+export const ProductsList = ({findProductsUseCase}) => {
+    const {products} = useFindProducts(findProductsUseCase);
 
     return (
         <div className="p-4">
