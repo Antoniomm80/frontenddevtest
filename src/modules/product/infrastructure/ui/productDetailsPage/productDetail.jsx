@@ -4,13 +4,12 @@ import {ProductImage} from "./ProductImage.jsx";
 import {ProductDescription} from "./ProductDescription.jsx";
 
 
-export const ProductDetail = ({findByIdUseCase}) => {
+export const ProductDetail = () => {
     let {id} = useParams();
-    const {productDetail} = useFindById(findByIdUseCase, id);
+    const {productDetail} = useFindById(id);
     if (!productDetail) return (
         <div className="p-4">Loading...</div>
     )
-    console.log(productDetail);
     return (
         <div className="p-4">
             <div className="border rounded-lg p-4 shadow">

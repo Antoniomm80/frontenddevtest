@@ -1,7 +1,9 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
+import {UseCasesContext} from '../../../../App.jsx';
 
-export const useFindById = (findByIdUseCase, id) => {
+export const useFindById = (id) => {
     const [productDetail, setProductDetail] = useState(null);
+    const {findByIdUseCase} = useContext(UseCasesContext);
 
     const fetchProductDetail = async () => {
         try {

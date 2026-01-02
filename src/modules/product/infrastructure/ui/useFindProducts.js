@@ -1,6 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
+import {UseCasesContext} from '../../../../App.jsx';
 
-export const useFindProducts = (findProductsUseCase) => {
+export const useFindProducts = () => {
+    const {findProductsUseCase} = useContext(UseCasesContext);
     const [products, setProducts] = useState([]);
 
 
