@@ -32,4 +32,8 @@ export class Product {
         this.weight = weight;
         this.options = options;
     }
+
+    get fullName() {
+        return `${this.brand} ${this.model}`;
+    }
 }

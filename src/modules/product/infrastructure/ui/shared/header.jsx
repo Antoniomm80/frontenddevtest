@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {Breadcrumb} from "./breadcrumb.jsx";
 
 export const Header = () => {
     return (
@@ -7,6 +8,9 @@ export const Header = () => {
                 <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
                     <img src="/react.svg" alt="React Logo" className="h-8 w-8"/>
                 </Link>
+            </div>
+            <div className="container mx-auto px-4 pb-1">
+                <Breadcrumb/>
             </div>
         </header>
     );
