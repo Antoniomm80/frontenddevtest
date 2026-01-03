@@ -9,4 +9,8 @@ export class ProductService {
         }
         throw new Error('No implementado');
     }
+
+    async addToCart({id, colorCode, storageCode}) {
+        throw new Error('No implementado');
+    }
 }
