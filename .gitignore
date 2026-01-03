@@ -277,3 +277,8 @@ sketch
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node,intellij+all,yarn,react
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.auth/

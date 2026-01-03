@@ -16,6 +16,7 @@ export const ProductActions = ({product}) => {
             <div className="flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Color:</label>
                 <select
+                    id="select-color"
                     className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     onChange={(e) => setSelectedColorOption(e.target.value)}>
                     {colorOptions.map((option) => (
@@ -27,6 +28,7 @@ export const ProductActions = ({product}) => {
             <div className="flex flex-col">
                 <label className="mb-2 font-medium text-gray-700">Storage:</label>
                 <select
+                    id="select-storage"
                     className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     onChange={(e) => setSelectedStorageOption(e.target.value)}>
                     {storageOptions.map((option) => (

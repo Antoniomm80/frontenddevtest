@@ -5,7 +5,6 @@ export const CartCountBadge = () => {
     const {cartCount} = useContext(CartContext);
     return (
         <div className="flex items-center gap-2">
-            {/* Cart Icon */}
             <svg
                 className="w-6 h-6 text-gray-700"
                 fill="none"
@@ -21,8 +20,7 @@ export const CartCountBadge = () => {
  1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
             </svg>
-            {/* Badge with Count */}
-            <span className="bg-blue-600 text-white rounded-full px-2.5 py-0.5 text-sm
+            <span id="cart-badge" className="bg-blue-600 text-white rounded-full px-2.5 py-0.5 text-sm
  font-semibold min-w-[28px] text-center">
                  {cartCount}
              </span>
