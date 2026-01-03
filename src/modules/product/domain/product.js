@@ -36,4 +36,12 @@ export class Product {
     get fullName() {
         return `${this.brand} ${this.model}`;
     }
+
+    get colorOptions() {
+        return this.options.colors || [];
+    }
+
+    get storageOptions() {
+        return this.options.storages || [];
+    }
 }

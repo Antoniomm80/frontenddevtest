@@ -1,5 +1,6 @@
 import {ProductImage} from "./ProductImage.jsx";
 import {ProductDescription} from "./ProductDescription.jsx";
+import {ProductActions} from "./productActions.jsx";
 
 
 export const ProductDetail = ({productDetail}) => {
@@ -15,7 +16,10 @@ export const ProductDetail = ({productDetail}) => {
                         brand={productDetail.brand}
                         model={productDetail.model}
                     />
-                    <ProductDescription product={productDetail}/>
+                    <div className="flex flex-col gap-6">
+                        <ProductDescription product={productDetail}/>
+                        <ProductActions product={productDetail}/>
+                    </div>
                 </div>
             </div>
         </div>
