@@ -1,10 +1,14 @@
 import {useContext} from 'react';
-import {UseCasesContext} from '../../../../App.jsx';
+import {CartContext, UseCasesContext} from '../../../../App.jsx';
 
 export const useAddToCart = () => {
 
     const {addToCartUseCase} = useContext(UseCasesContext);
+    const {updateCartCount} = useContext(CartContext);
     return {
-        addToCart: (data) => addToCartUseCase.execute(data)
+        addToCart: async (data) => {
+            const cartCount = await addToCartUseCase.execute(data);
+            updateCartCount(cartCount);
+        }
     };
 };

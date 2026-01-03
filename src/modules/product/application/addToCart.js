@@ -8,6 +8,7 @@ export class AddToCart {
         try {
             const numItems = await this.productService.addToCart({id, colorCode, storageCode});
             await this.storageService.saveCartNumItems(numItems);
+            return numItems;
         } catch (error) {
             console.error('Use case error - AddToCart:', error);
             throw error;

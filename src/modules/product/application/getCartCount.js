@@ -5,7 +5,7 @@ export class GetCartCount {
 
     async execute() {
         try {
-            await this.storageService.getCartNumItems();
+            return await this.storageService.getCartNumItems();
         } catch (error) {
             console.error('Use case error - GetCartCount:', error);
             throw error;
