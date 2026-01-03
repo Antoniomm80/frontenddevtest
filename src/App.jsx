@@ -1,6 +1,5 @@
 import './App.css'
 import {Route, Routes} from 'react-router-dom'
-import {ProductFetchService} from "./modules/product/infrastructure/productFetchService.js";
 import {FindProducts} from "./modules/product/application/findProducts.js";
 import {FindById} from "./modules/product/application/findById.js";
 import {createContext, useCallback, useEffect, useState} from "react";
@@ -10,10 +9,12 @@ import {ProductDetailPage} from "./modules/product/infrastructure/ui/productDeta
 import {BrowserStorageService} from "./modules/product/infrastructure/browserStorageService.js";
 import {AddToCart} from "./modules/product/application/addToCart.js";
 import {GetCartCount} from "./modules/product/application/getCartCount.js";
+import {ProductCachedFetchService} from "./modules/product/infrastructure/productCachedFetchService.js";
 
 const API_BASE_URL = "https://itx-frontend-test.onrender.com";
+const ONE_HOUR = 3600000;
 
-const productApiService = new ProductFetchService(API_BASE_URL);
+const productApiService = new ProductCachedFetchService(API_BASE_URL, ONE_HOUR);
 const storageService = new BrowserStorageService();
 
 const findProductsUseCase = new FindProducts(productApiService);
