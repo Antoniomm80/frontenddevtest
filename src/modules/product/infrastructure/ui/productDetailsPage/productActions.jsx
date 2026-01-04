@@ -6,10 +6,10 @@ export const ProductActions = ({product}) => {
     const storageOptions = product.storageOptions;
     const {addToCart} = useAddToCart();
     const [selectedColorOption, setSelectedColorOption] = useState(
-        colorOptions.length === 1 ? colorOptions[0].code : ""
+        colorOptions.length >= 1 ? colorOptions[0].code : ""
     );
     const [selectedStorageOption, setSelectedStorageOption] = useState(
-        storageOptions.length === 1 ? storageOptions[0].code : ""
+        storageOptions.length >= 1 ? storageOptions[0].code : ""
     );
     return (
         <div className="space-y-4">
