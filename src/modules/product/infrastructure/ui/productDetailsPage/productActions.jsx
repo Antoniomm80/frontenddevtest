@@ -1,6 +1,5 @@
 import {useAddToCart} from "../useAddtoCart.js";
 import {useState} from "react";
-import {CartItem} from "../../../../cart/domain/cartItem.js";
 
 export const ProductActions = ({product}) => {
     const colorOptions = product.colorOptions;
@@ -40,7 +39,7 @@ export const ProductActions = ({product}) => {
 
             <button
                 className="w-full px-6 py-3 mt-4 text-white font-semibold bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-                onClick={() => addToCart(new CartItem(product.id, selectedColorOption, selectedStorageOption))}>
+                onClick={() => addToCart({id: product.id, colorCode: selectedColorOption, storageCode: selectedStorageOption})}>
                 Add to Cart
             </button>
         </div>
