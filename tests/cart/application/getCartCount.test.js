@@ -1,5 +1,5 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
-import {GetCartCount} from "../../src/modules/product/application/getCartCount.js";
+import {GetCartCount} from "../../../src/modules/cart/application/getCartCount.js";
 
 describe('Get Cart Count Use Case', () => {
     let getCartCount;

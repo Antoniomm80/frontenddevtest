@@ -1,6 +1,6 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {ProductFetchService} from '../../src/modules/product/infrastructure/productFetchService.js';
-import {Product} from '../../src/modules/product/domain/product.js';
+import {ProductFetchService} from '../../../src/modules/product/infrastructure/productFetchService.js';
+import {Product} from '../../../src/modules/product/domain/product.js';
 
 describe('Product Service', () => {
     let productService;
@@ -142,37 +142,5 @@ describe('Product Service', () => {
             expect(mockFetch).not.toHaveBeenCalled();
         });
 
-    });
-    describe('add to cart', () => {
-        it('Debe Postear un id de objeto junto al código de almacenamiento y el código de color y debe devolver el número de elementos en el carrito', async () => {
-            const cartData = {
-                id: 'cGjFJlmqNPIwU59AOcY8H',
-                colorCode: 1000,
-                storageCode: 2000
-            };
-
-            const mockResponse = {
-                count: 5
-            };
-
-            mockFetch.mockResolvedValueOnce({
-                ok: true,
-                json: async () => mockResponse
-            });
-
-            const result = await productService.addToCart(cartData);
-
-            expect(mockFetch).toHaveBeenCalledWith(
-                'https://itx-frontend-test.onrender.com/api/cart',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(cartData)
-                }
-            );
-            expect(result).toBe(5);
-        });
     });
 });

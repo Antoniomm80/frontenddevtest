@@ -37,24 +37,4 @@ export class ProductFetchService extends ProductService {
             throw error;
         }
     }
-
-    async addToCart({id, colorCode, storageCode}) {
-        try {
-            const response = await fetch(`${this.baseUrl}/api/cart`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({id, colorCode, storageCode}),
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            return data.count;
-        } catch (error) {
-            console.error('Error adding to cart:', error);
-            throw error;
-        }
-    }
 }

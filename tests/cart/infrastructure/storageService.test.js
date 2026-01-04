@@ -1,5 +1,5 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {BrowserStorageService} from '../../src/modules/product/infrastructure/browserStorageService.js';
+import {BrowserStorageService} from '../../../src/modules/cart/infrastructure/browserStorageService.js';
 
 describe('Browser Storage Service', () => {
     let storageService;
@@ -36,7 +36,7 @@ describe('Browser Storage Service', () => {
             expect(mockLocalStorage.getItem).toHaveBeenCalledWith('cartNumItems');
             expect(result).toBe(0);
         });
-        
+
     });
 
     describe('saveCartNumItems', () => {

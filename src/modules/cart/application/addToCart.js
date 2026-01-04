@@ -1,12 +1,12 @@
 export class AddToCart {
-    constructor(productService, storageService) {
-        this.productService = productService;
+    constructor(cartService, storageService) {
+        this.cartService = cartService;
         this.storageService = storageService;
     }
 
-    async execute({id, colorCode, storageCode}) {
+    async execute(cartItem) {
         try {
-            const numItems = await this.productService.addToCart({id, colorCode, storageCode});
+            const numItems = await this.cartService.addToCart(cartItem);
             await this.storageService.saveCartNumItems(numItems);
             return numItems;
         } catch (error) {

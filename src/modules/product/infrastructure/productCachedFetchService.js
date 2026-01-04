@@ -12,7 +12,7 @@ export class ProductCachedFetchService extends ProductFetchService {
         if (!cached) return false;
 
         try {
-            const { timestamp } = JSON.parse(cached);
+            const {timestamp} = JSON.parse(cached);
             const now = Date.now();
             return (now - timestamp) < this.expirationTime;
         } catch {
@@ -25,7 +25,7 @@ export class ProductCachedFetchService extends ProductFetchService {
         if (!cached) return null;
 
         try {
-            const { data } = JSON.parse(cached);
+            const {data} = JSON.parse(cached);
             return data;
         } catch {
             return null;
@@ -67,9 +67,5 @@ export class ProductCachedFetchService extends ProductFetchService {
             this.setCacheData(cacheKey, {...product});
         }
         return product;
-    }
-
-    async addToCart({id, colorCode, storageCode}) {
-        return super.addToCart({id, colorCode, storageCode});
     }
 }

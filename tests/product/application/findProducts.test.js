@@ -1,6 +1,6 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
-import {FindProducts} from '../../src/modules/product/application/findProducts.js';
-import {Product} from '../../src/modules/product/domain/product.js';
+import {FindProducts} from '../../../src/modules/product/application/findProducts.js';
+import {Product} from '../../../src/modules/product/domain/product.js';
 
 describe('Find Products Use Case', () => {
     let findProducts;

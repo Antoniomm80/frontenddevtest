@@ -1,6 +1,6 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
-import {ProductCachedFetchService} from "../../src/modules/product/infrastructure/productCachedFetchService.js";
-import {Product} from "../../src/modules/product/domain/product.js";
+import {ProductCachedFetchService} from "../../../src/modules/product/infrastructure/productCachedFetchService.js";
+import {Product} from "../../../src/modules/product/domain/product.js";
 
 describe('Cached Product Service', () => {
     let productService;
