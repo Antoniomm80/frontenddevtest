@@ -7,7 +7,6 @@ export const useAddToCart = () => {
     const {updateCartCount} = useContext(CartContext);
     return {
         addToCart: async (data) => {
-            console.log('addToCartUseCase:', data);
             const cartCount = await addToCartUseCase.execute(data);
             updateCartCount(cartCount);
         }
