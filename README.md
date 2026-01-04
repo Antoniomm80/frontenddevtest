@@ -108,6 +108,23 @@ La aplicación requiere Node 18 y Yarn 1.22 para su correcta ejecución. Si el h
 
 ### Modo Docker
 
+Si se desea evitar instalar Node 18 y Yarn 1.22 en el host, y se dispone de Docker, se puede ejecutar el proyecto mediante Docker. Para ello, basta
+con ejecutar el script `run-docker.sh` que se encuentra en la raíz del proyecto:
+
+Este script se encarga de construir la imagen Docker y lanzarla.
+
+La imagen, es una build multistep que se encarga de pasar los test tanto los test de vite como los de playwright, fallando la construcción de la
+imagen si algún test falla
+
+```shell
+./run-docker.sh
+```
+
+### Nota importante sobre los tests de aceptación
+
+Debido a que los tests de aceptación dependen de la disponibilidad del servidor ITX demo, es conveniente que se encuentre arrancado para evitar
+timeouts y la build falle
+
 ## Marco tecnológico
 
 El proyecto se ha implementado utilizando las siguientes tecnologías:
@@ -128,3 +145,5 @@ El entorno de desarrollo utilizado ha sido:
 - Node Version Manager
 - Ghostty
 - OrbStack
+
+
