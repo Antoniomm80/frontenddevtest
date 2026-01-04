@@ -26,12 +26,12 @@ const addToCartUseCase = new AddToCart(cartApiService, storageService);
 const getCartCountUseCase = new GetCartCount(storageService);
 export const UseCasesContext = createContext({findProductsUseCase, findByIdUseCase, getCartCountUseCase});
 export const BreadCrumbContext = createContext({
-    undefined, function() {
-    }
+    breadCrumb: undefined,
+    updateBreadcrumb: () => {}
 });
 export const CartContext = createContext({
-    undefined, function() {
-    }
+    cartCount: 0,
+    updateCartCount: () => {}
 });
 
 function App() {
