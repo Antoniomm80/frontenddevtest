@@ -1,6 +1,5 @@
 import {useContext} from 'react';
 import {CartContext, UseCasesContext} from '../../../../App.jsx';
-import {CartItem} from "../../../cart/domain/cartItem.js";
 
 export const useAddToCart = () => {
 
@@ -8,7 +7,7 @@ export const useAddToCart = () => {
     const {updateCartCount} = useContext(CartContext);
     return {
         addToCart: async (command) => {
-            const cartCount = await addToCartUseCase.execute(new CartItem(command.id, command.colorCode, command.storageCode));
+            const cartCount = await addToCartUseCase.execute(command);
             updateCartCount(cartCount);
         }
     };
