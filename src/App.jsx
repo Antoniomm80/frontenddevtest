@@ -1,5 +1,6 @@
 import './App.css'
 import {Route, Routes} from 'react-router-dom'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {FindProducts} from "./modules/product/application/findProducts.js";
 import {FindById} from "./modules/product/application/findById.js";
 import {createContext, useCallback, useEffect, useState} from "react";
@@ -9,13 +10,25 @@ import {ProductDetailPage} from "./modules/product/infrastructure/ui/productDeta
 import {BrowserStorageService} from "./modules/cart/infrastructure/browserStorageService.js";
 import {AddToCart} from "./modules/cart/application/addToCart.js";
 import {GetCartCount} from "./modules/cart/application/getCartCount.js";
-import {ProductCachedFetchService} from "./modules/product/infrastructure/productCachedFetchService.js";
 import {CartFetchService} from "./modules/cart/infrastructure/cartFetchService.js";
+import {ProductTanstackQueryService} from "./modules/product/infrastructure/productTanstackQueryService.js";
 
 const API_BASE_URL = "https://itx-frontend-test.onrender.com";
 const ONE_HOUR = 3600000;
 
-const productApiService = new ProductCachedFetchService(API_BASE_URL, ONE_HOUR);
+// TanStack Query Client with 1 hour cache configuration
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: ONE_HOUR,
+            gcTime: ONE_HOUR,
+            refetchOnWindowFocus: false,
+            refetchOnMount: false,
+        },
+    },
+});
+
+const productApiService = new ProductTanstackQueryService(API_BASE_URL, queryClient);
 const cartApiService = new CartFetchService(API_BASE_URL);
 
 const storageService = new BrowserStorageService();
@@ -27,11 +40,13 @@ const getCartCountUseCase = new GetCartCount(storageService);
 export const UseCasesContext = createContext({findProductsUseCase, findByIdUseCase, getCartCountUseCase});
 export const BreadCrumbContext = createContext({
     breadCrumb: undefined,
-    updateBreadcrumb: () => {}
+    updateBreadcrumb: () => {
+    }
 });
 export const CartContext = createContext({
     cartCount: 0,
-    updateCartCount: () => {}
+    updateCartCount: () => {
+    }
 });
 
 function App() {
@@ -60,17 +75,19 @@ function App() {
 
 
     return (
-        <UseCasesContext.Provider value={{findProductsUseCase, findByIdUseCase, addToCartUseCase}}>
-            <BreadCrumbContext.Provider value={{breadCrumb, updateBreadcrumb}}>
-                <CartContext.Provider value={{cartCount, updateCartCount}}>
-                    <Header/>
-                    <Routes>
-                        <Route path="/" element={<ProductListPage/>}/>
-                        <Route path="/product/:id" element={<ProductDetailPage/>}/>
-                    </Routes>
-                </CartContext.Provider>
-            </BreadCrumbContext.Provider>
-        </UseCasesContext.Provider>
+        <QueryClientProvider client={queryClient}>
+            <UseCasesContext.Provider value={{findProductsUseCase, findByIdUseCase, addToCartUseCase}}>
+                <BreadCrumbContext.Provider value={{breadCrumb, updateBreadcrumb}}>
+                    <CartContext.Provider value={{cartCount, updateCartCount}}>
+                        <Header/>
+                        <Routes>
+                            <Route path="/" element={<ProductListPage/>}/>
+                            <Route path="/product/:id" element={<ProductDetailPage/>}/>
+                        </Routes>
+                    </CartContext.Provider>
+                </BreadCrumbContext.Provider>
+            </UseCasesContext.Provider>
+        </QueryClientProvider>
     )
 }
 
