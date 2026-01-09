@@ -12,7 +12,9 @@ import {AddToCart} from "./modules/cart/application/addToCart.js";
 import {GetCartCount} from "./modules/cart/application/getCartCount.js";
 import {CartFetchService} from "./modules/cart/infrastructure/cartFetchService.js";
 import {ProductTanstackQueryService} from "./modules/product/infrastructure/productTanstackQueryService.js";
-import { Toaster } from 'react-hot-toast';
+import {Toaster} from 'react-hot-toast';
+import {createSyncStoragePersister} from "@tanstack/query-sync-storage-persister";
+import {persistQueryClient} from '@tanstack/react-query-persist-client'
 
 const API_BASE_URL = "https://itx-frontend-test.onrender.com";
 const ONE_HOUR = 3600000;
@@ -28,6 +30,14 @@ const queryClient = new QueryClient({
         },
     },
 });
+const localStoragePersister = createSyncStoragePersister({
+    storage: window.localStorage,
+});
+
+persistQueryClient({
+    queryClient,
+    persister: localStoragePersister,
+})
 
 const productApiService = new ProductTanstackQueryService(API_BASE_URL, queryClient);
 const cartApiService = new CartFetchService(API_BASE_URL);
@@ -85,7 +95,7 @@ function App() {
                             <Route path="/" element={<ProductListPage/>}/>
                             <Route path="/product/:id" element={<ProductDetailPage/>}/>
                         </Routes>
-                        <Toaster position="top-right" />
+                        <Toaster position="top-right"/>
                     </CartContext.Provider>
                 </BreadCrumbContext.Provider>
             </UseCasesContext.Provider>
