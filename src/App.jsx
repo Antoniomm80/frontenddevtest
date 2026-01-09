@@ -12,7 +12,7 @@ import {GetCartCount} from "./modules/cart/application/getCartCount.js";
 import {ProductCachedFetchService} from "./modules/product/infrastructure/productCachedFetchService.js";
 import {CartFetchService} from "./modules/cart/infrastructure/cartFetchService.js";
 
-const API_BASE_URL = "https://itx-frontend-test.onrender.com";
+const API_BASE_URL = import.meta.env.DEV ? "" : "https://itx-frontend-test.onrender.com";
 const ONE_HOUR = 3600000;
 
 const productApiService = new ProductCachedFetchService(API_BASE_URL, ONE_HOUR);

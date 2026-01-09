@@ -13,6 +13,7 @@ export class CartFetchService extends CartService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: 'include',
                 body: JSON.stringify(cartItem),
             });
             if (!response.ok) {
