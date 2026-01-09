@@ -8,9 +8,11 @@ export class AddToCart {
 
     async execute(command) {
         try {
-            const numItems = await this.cartService.addToCart(new CartItem(command.id, command.colorCode, command.storageCode));
-            await this.storageService.saveCartNumItems(numItems);
-            return numItems;
+            const numItemsAdded = await this.cartService.addToCart(new CartItem(command.id, command.colorCode, command.storageCode));
+            const storedNumItems = await this.storageService.getCartNumItems();
+            const totalItems = storedNumItems + numItemsAdded;
+            await this.storageService.saveCartNumItems(totalItems);
+            return totalItems;
         } catch (error) {
             console.error('Use case error - AddToCart:', error);
             throw error;

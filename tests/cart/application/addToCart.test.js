@@ -11,16 +11,19 @@ describe('Add to Cart Use Case', () => {
             addToCart: vi.fn()
         };
         mockStorageService = {
-            saveCartNumItems: vi.fn()
+            saveCartNumItems: vi.fn(),
+            getCartNumItems: vi.fn()
         };
         addToCart = new AddToCart(mockCartService, mockStorageService);
     });
 
     it('Debe invocar el método addToCart del servicio de gestión de carrito y luego guardarlo mediante el servicio de persistencia', async () => {
-        mockCartService.addToCart.mockResolvedValueOnce(3);
+        mockStorageService.getCartNumItems.mockResolvedValueOnce(2);
+        mockCartService.addToCart.mockResolvedValueOnce(1);
 
         await addToCart.execute({id: "8hKbH2UHPM_944nRHYN1n", colorCode: 1000, storageCode: 2000});
 
+        expect(mockStorageService.getCartNumItems).toHaveBeenCalledTimes(1);
         expect(mockCartService.addToCart).toHaveBeenCalledTimes(1);
         expect(mockCartService.addToCart).toHaveBeenCalledWith({id: "8hKbH2UHPM_944nRHYN1n", colorCode: 1000, storageCode: 2000});
         expect(mockStorageService.saveCartNumItems).toHaveBeenCalledTimes(1);
