@@ -15,7 +15,7 @@ export const useFindById = (id) => {
             } catch (err) {
                 console.error('Error in findById:', err);
             } finally {
-                setIsLoading(true);
+                setIsLoading(false);
             }
             setIsLoading(false);
         };
