@@ -4,14 +4,19 @@ import {UseCasesContext} from '../../../../App.jsx';
 export const useFindProducts = (searchTerm) => {
     const {findProductsUseCase} = useContext(UseCasesContext);
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const fetchProducts = async () => {
         try {
+            setIsLoading(true);
             const result = await findProductsUseCase.execute(searchTerm);
             setProducts(result);
+            setIsLoading(false);
         } catch (err) {
             console.error('Error in useFindProducts:', err);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -20,6 +25,6 @@ export const useFindProducts = (searchTerm) => {
     }, [searchTerm]);
 
     return {
-        products
+        products, isLoading
     };
 };

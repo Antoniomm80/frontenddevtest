@@ -4,9 +4,6 @@ import {ProductActions} from "./productActions.jsx";
 
 
 export const ProductDetail = ({productDetail}) => {
-    if (!productDetail) return (
-        <div className="p-4">Loading...</div>
-    )
     return (
         <div className="p-4">
             <div className="border rounded-lg p-4 shadow">
