@@ -12,6 +12,7 @@ import {AddToCart} from "./modules/cart/application/addToCart.js";
 import {GetCartCount} from "./modules/cart/application/getCartCount.js";
 import {CartFetchService} from "./modules/cart/infrastructure/cartFetchService.js";
 import {ProductTanstackQueryService} from "./modules/product/infrastructure/productTanstackQueryService.js";
+import { Toaster } from 'react-hot-toast';
 
 const API_BASE_URL = "https://itx-frontend-test.onrender.com";
 const ONE_HOUR = 3600000;
@@ -84,6 +85,7 @@ function App() {
                             <Route path="/" element={<ProductListPage/>}/>
                             <Route path="/product/:id" element={<ProductDetailPage/>}/>
                         </Routes>
+                        <Toaster position="top-right" />
                     </CartContext.Provider>
                 </BreadCrumbContext.Provider>
             </UseCasesContext.Provider>
