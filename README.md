@@ -96,6 +96,7 @@ Estos son los scripts disponibles en el proyecto
 - `yarn test` Para ejecutar los tests
 - `yarn lint` Para ejecutar el linter
 - `yarn test:e2e`: Para ejecutar los tests de aceptación
+- `yarn playwright show-report`: Para levantar un servidor web que muestre los resultados de la ejecución de playwright
 
 ## Ejecución del proyecto
 
@@ -113,17 +114,20 @@ con ejecutar el script `run-docker.sh` que se encuentra en la raíz del proyecto
 
 Este script se encarga de construir la imagen Docker y lanzarla.
 
-La imagen, es una build multistep que se encarga de pasar los test tanto los test de vite como los de playwright, fallando la construcción de la
-imagen si algún test falla
+La imagen, es una build multistep que se encarga de pasar los test de vite, fallando la construcción de la
+imagen si algún test falla. No se incluye como paso extra la ejecución de los tests de playwright para no alargar innecesariamente el tiempo de
+construcción de la imagen ya que debe bajarse las distintas imágenes de los navegadores.
 
 ```shell
 ./run-docker.sh
 ```
 
+Cuando se corre el script anterior, el servidor se lanza en el puerto 3000 ya que se trata de la build de producción.
+
 ### Nota importante sobre los tests de aceptación
 
 Debido a que los tests de aceptación dependen de la disponibilidad del servidor ITX demo, es conveniente que se encuentre arrancado para evitar
-timeouts y la build falle
+timeouts y la ejecución falle
 
 ## Marco tecnológico
 
@@ -135,6 +139,7 @@ El proyecto se ha implementado utilizando las siguientes tecnologías:
 - React
 - ESScript 6
 - Tailwind CSS
+- Tanstack Query
 - Yarn
 - Vitest
 - Playwright
