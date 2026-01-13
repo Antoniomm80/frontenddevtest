@@ -151,7 +151,7 @@ describe('TanStack Query Product Service', () => {
             expect(mockFetch).toHaveBeenCalledTimes(1);
 
             const result = await productService.findById("cGjFJlmqNPIwU59AOcY8H");
-            expect(mockFetch).toHaveBeenCalledTimes(1); // Should still be 1, not 2
+            expect(mockFetch).toHaveBeenCalledTimes(1);
             expect(result).toBeInstanceOf(Product);
             expect(result.id).toBe('cGjFJlmqNPIwU59AOcY8H');
             expect(result.model).toBe('Liquid Z6 Plus');

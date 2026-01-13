@@ -12,8 +12,7 @@ export class ProductTanstackQueryService extends ProductFetchService {
         return this.queryClient.fetchQuery({
             queryKey,
             queryFn: async () => {
-                const products = await super.getAll();
-                return products;
+                return await super.getAll();
             },
         });
     }
@@ -28,8 +27,7 @@ export class ProductTanstackQueryService extends ProductFetchService {
         return this.queryClient.fetchQuery({
             queryKey,
             queryFn: async () => {
-                const product = await super.findById(id);
-                return product;
+                return await super.findById(id);
             },
         });
     }
