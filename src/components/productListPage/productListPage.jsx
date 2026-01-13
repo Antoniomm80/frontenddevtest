@@ -3,7 +3,7 @@ import {useFindProducts} from "../useFindProducts.js";
 import {ProductsList} from "./productsList.jsx";
 import {SearchBar} from "./searchBar.jsx";
 import {PageContainer} from "../shared/pageContainer.jsx";
-import {BreadCrumbContext} from "../../../../../App.jsx";
+import {BreadCrumbContext} from "../../App.jsx";
 import {Spinner} from "../shared/spinner.jsx";
 
 export const ProductListPage = () => {

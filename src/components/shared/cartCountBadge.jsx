@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {CartContext} from "../../../../../App.jsx";
+import {CartContext} from "../../App.jsx";
 
 export const CartCountBadge = () => {
     const {cartCount} = useContext(CartContext);

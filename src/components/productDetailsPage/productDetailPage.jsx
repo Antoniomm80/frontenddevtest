@@ -3,7 +3,7 @@ import {useFindById} from "../useFindById.js";
 import {ProductDetail} from "./productDetail.jsx";
 import {useParams} from "react-router-dom";
 import {useContext, useEffect} from "react";
-import {BreadCrumbContext} from "../../../../../App.jsx";
+import {BreadCrumbContext} from "../../App.jsx";
 import {Spinner} from "../shared/spinner.jsx";
 
 export const ProductDetailPage = () => {

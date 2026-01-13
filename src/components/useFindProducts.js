@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from 'react';
-import {UseCasesContext} from '../../../../App.jsx';
+import {UseCasesContext} from '../App.jsx';
 import toast from 'react-hot-toast';
 
 export const useFindProducts = (searchTerm) => {

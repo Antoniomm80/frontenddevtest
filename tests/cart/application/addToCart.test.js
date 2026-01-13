@@ -17,7 +17,7 @@ describe('Add to Cart Use Case', () => {
         addToCart = new AddToCart(mockCartService, mockStorageService);
     });
 
-    it('Debe invocar el método addToCart del servicio de gestión de carrito y luego guardarlo mediante el servicio de persistencia', async () => {
+    it('Debe invocar obtener el total persistido, luego al método addToCart del servicio de gestión de carrito, sumar ambos valores y luego guardarlo mediante el servicio de persistencia', async () => {
         mockStorageService.getCartNumItems.mockResolvedValueOnce(2);
         mockCartService.addToCart.mockResolvedValueOnce(1);
 

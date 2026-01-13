@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {BreadCrumbContext} from "../../../../../App.jsx";
+import {BreadCrumbContext} from "../../App.jsx";
 import {Link} from "react-router-dom";
 
 export const Breadcrumb = () => {

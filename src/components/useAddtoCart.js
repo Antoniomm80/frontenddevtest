@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {CartContext, UseCasesContext} from '../../../../App.jsx';
+import {CartContext, UseCasesContext} from '../App.jsx';
 import toast from 'react-hot-toast';
 
 export const useAddToCart = () => {
