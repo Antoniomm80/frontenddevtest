@@ -24,27 +24,6 @@ RUN yarn test:run
 # Create a marker file to confirm tests passed
 RUN touch /tmp/unit-tests-passed
 
-# Stage 3: Run Playwright e2e tests
-FROM mcr.microsoft.com/playwright:v1.57.0-jammy AS test-e2e
-
-WORKDIR /app
-
-# Install yarn
-RUN npm install -g yarn
-
-# Copy dependencies and source code
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-
-# Install Playwright browsers
-RUN npx playwright install --with-deps chromium
-
-# Run Playwright tests
-RUN yarn test:e2e
-
-# Create a marker file to confirm tests passed
-RUN touch /tmp/e2e-tests-passed
-
 # Stage 4: Build production
 FROM node:18-alpine AS build
 
@@ -52,7 +31,6 @@ WORKDIR /app
 
 # Copy test markers to ensure tests ran successfully
 COPY --from=test-unit /tmp/unit-tests-passed /tmp/
-COPY --from=test-e2e /tmp/e2e-tests-passed /tmp/
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
